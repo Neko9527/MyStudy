@@ -11,6 +11,11 @@ public class LC1897 {
         System.out.println(makeEqual(str));
     }
 
+    /**
+     * 思路是所有字符的数量等于是数组的长度的倍数
+     * @param words
+     * @return
+     */
     public static boolean makeEqual(String[] words) {
         int[] arr = new int[26];
         for (int i = 0; i < words.length; i++) {
