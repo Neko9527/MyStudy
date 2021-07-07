@@ -7,7 +7,7 @@ public class LC26 {
 
     public static void main(String[] args) {
 
-        int[] nums = {0};
+        int[] nums = {0,0,1,1,1,2,2,3,3,4};
         removeDuplicates(nums);
     }
 
