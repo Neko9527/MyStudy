@@ -7,7 +7,7 @@ package com.xcw.practice;
 public class LC264 {
 
     public static void main(String[] args) {
-        System.out.println(nthUglyNumber1(1));
+        System.out.println(isUgly1(35));
     }
 
     public static int nthUglyNumber(int n) {
@@ -22,42 +22,58 @@ public class LC264 {
         return m;
     }
 
+    /**
+     * 如果n为丑数，那么n一定可以被{2，3，5}中一个数整除
+     * @param n
+     * @return
+     */
+    public static boolean isUgly1(int n) {
+        if (n <= 0) {
+            return false;
+        }
+        int[] factors = {2, 3, 5};
+        for (int factor : factors) {
+            while (n % factor == 0) {
+                n /= factor;
+            }
+        }
+        return n == 1;
+    }
 
-    public static boolean isUgly(int m) {
+    public static boolean isUgly(int n) {
         boolean bool = true;
-        if(m % 2 != 0 && m % 3 != 0 && m % 5 != 0) return false;
-        int tmp = m;
+        if(n % 2 != 0 && n % 3 != 0 && n % 5 != 0) return false;
         while (true) {
-           if(tmp / 2 * 2 != tmp) {
-               if(tmp % 3 != 0 || tmp % 5 != 0) {
+           if(n / 2 * 2 != n) {
+               if(n % 3 != 0 || n % 5 != 0) {
                    bool = false;
                }
                break;
            }
-           if(tmp == 2) return true;
-           tmp /= 2;
+           if(n == 2) return true;
+           n /= 2;
         }
 
         while (true) {
-            if(tmp / 3 * 3 != tmp) {
-                if(tmp % 2 != 0 || tmp % 5 != 0) {
+            if(n / 3 * 3 != n) {
+                if(n % 2 != 0 || n % 5 != 0) {
                     bool = false;
                 }
                 break;
             }
-            if(tmp == 3) return true;
-            tmp /= 3;
+            if(n == 3) return true;
+            n /= 3;
         }
 
         while (true) {
-            if(tmp / 5 * 5 != tmp) {
-                if(tmp % 3 != 0 || tmp % 2 != 0) {
+            if(n / 5 * 5 != n) {
+                if(n % 3 != 0 || n % 2 != 0) {
                     bool = false;
                 }
                 break;
             }
-            if(tmp == 5) return true;
-            tmp /= 5;
+            if(n == 5) return true;
+            n /= 5;
         }
         return bool;
     }
